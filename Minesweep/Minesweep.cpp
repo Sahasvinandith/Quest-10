@@ -1,5 +1,6 @@
 
 #include <iostream>
+#include "Grid.h"
 using namespace std;
 
 int main()
@@ -14,17 +15,50 @@ int main()
     int option;
     cout<<"\nEnter your option number: ";
     cin>>option;
+
+    Grid* newgrid;
+    switch (option)
+    {
+    case 1:
+        newgrid = new Grid(10, 10);
+        newgrid->showgrid();
+        
+        break;
+        
+    case 2:
+        newgrid = new Grid(15, 15);
+        newgrid->showgrid();
+        break;
+
+    case 3:
+        newgrid = new Grid(20, 20);
+        newgrid->showgrid();
+        break;
+    default:
+        cout << "Wrong input!!! please try again!!!.";
+        break;
+    }
+
     cout<<endl;
 
-    cout<<"Commands\n\n";
-    cout<<"F - place a flag on the location\nR - reveal the uncovered location\n\n";
-    char row , column , command;
-    cout<<"Enter three letters in <row letter><column letter><command>: ";
-    cin>>row>>column>>command;
-    if (command != 'r' && command != 'f')
-    {
-        cout<<"Invalid command!\n";
+    if (newgrid->playGame() == -1) {
+        cout << "Sorry You lost.. Press to start a new game..";
+        system("pause");
+        main();
     }
+    else {
+        cout << "Congratulations!!! You win !! Press to play again.";
+        system("pause");
+        main();
+
+    }
+
+    
+
+
+    
+
+
     
 
 }

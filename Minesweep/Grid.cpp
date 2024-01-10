@@ -4,8 +4,12 @@
 #include <iostream>
 #include <vector>
 #include <random>
+using namespace std;
 
 Grid::Grid(int row, int column) {
+	this->rows = row;
+	this->columns = column;
+
 	
 	if (row == 10) {
 		this->number_of_mines = 12;
@@ -30,16 +34,55 @@ Grid::Grid(int row, int column) {
 		}
 	}
 
-	for (int i = 0; i < this->number_of_mines; i++) {
-		int mine_row = rand() % row+1;
-		int mine_column = rand() % row + 1;
+	for (int i = 0; i <= this->number_of_mines; i++) {
+		int mine_row = rand() % row;
+		int mine_column = rand() % row;
 
-		this->GridVector[mine_row][mine_column].setchar('b');
+		this->GridVector[mine_row][mine_column].setbomb();
 
 	}
 
 
+}
 
+void Grid::showgrid() {
+	if (this->rows == 10) {
+		cout << "\t  A B C D E F G H I J"<<endl;
+	}
+	else if (this->rows == 15) {
+		cout << " \t  A B C D E F G H I J K L M N O"<<endl;
+	}
+	else {
+		cout << " \t  A B C D E F G H I J K L M N O P Q R S T" << endl;
+	}
+	char characterFromAscii;
+	for (int i = 0; i < rows; i++) {
+		characterFromAscii = static_cast<char>(i+65);
+		std::cout << "\t" << characterFromAscii << " ";
+		for (int j = 0; j < rows; j++) {
+			std::cout << this->GridVector[i][j].block << " ";
+		}
+		cout << endl;
+	}
+}
+
+int Grid::playGame() {
+	int flag_sets=0;
+	while (flag_sets < this->number_of_mines) {
+		cout << "Commands\n\n";
+		cout << "F - place a flag on the location\nR - reveal the uncovered location\n\n";
+		char row, column, command;
+		cout << "Enter three letters in <row letter> <column letter> <command>: ";
+		cin >> row >> column >> command;
+		if (command != 'r' && command != 'f')
+		{
+			cout << "Invalid command! Try again!!\n";
+		}
+		else {
+
+		}
+
+	}
 
 }
 

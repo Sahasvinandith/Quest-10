@@ -12,5 +12,6 @@ public:
 
 	Block(char block_property);
 	void setchar(char ch);
+	void setbomb();
 };
 

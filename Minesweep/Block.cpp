@@ -16,3 +16,7 @@ void Block::setchar(char ch) {
 
 }
 
+void Block::setbomb(){
+	this->bomb = true;
+}
+
