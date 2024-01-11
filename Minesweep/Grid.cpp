@@ -97,4 +97,53 @@ int Grid::playGame() {
 
 }
 
+int countNeighboringBombs(int row, int column) {
+    	int count = 0;
+    	for (int i = -1; i <= 1; ++i) {
+        	for (int j = -1; j <= 1; ++j) {
+            	// Skip the center cell
+            	if (i == 0 && j == 0) {
+                	continue;
+            	}
+
+            	int newRow = row + i;
+            	int newCol = column + j;
+
+            // Check if the calculated cell is a valid cell in the grid and contains a bomb
+            if (isValidCell(newRow, newCol) && GridVector[newRow][newCol].bomb) {
+                ++count;
+            }
+        }
+    }
+    return count;
+	}
+
+	bool isValidCell(int row, int column) {
+    	return row >= 0 && row < GridVector.size() && column >= 0 && column < GridVector[row].size();
+	}
+
+
+	
+	void reveal(char row, char column)
+	{
+		if (row > 0 && row <GridVector.size() && column > 0 && column < GridVector.size())
+		{
+			char GridChar = this->GridVector[row][column].block;
+			if this -> GridVector[row][column].bomb{
+						cout<< "Game Over! Try Again.";
+						//
+			}
+			else{
+				int numBombs = countNeighboringBombs(row, column);
+				if (numBombs == 0) {
+            	// No neighboring bombs - reveal a dot
+            		GridVector[row][column] = ".";
+        		} else {
+            		// Reveal the number of neighboring bombs
+            		GridVector[row][column] = numBombs;
+        		}
+			}
+		}
+	}
+
 
