@@ -21,7 +21,7 @@ Grid::Grid(int row, int column) {
 	else {
 		this->number_of_mines = 24;
 	}
-	int mine_added = 0;
+	//int mine_added = 0;
 
 	for (int i = 0; i < row; ++i) {
 		// Create a new row
@@ -45,6 +45,16 @@ Grid::Grid(int row, int column) {
 
 }
 
+void Grid::flag(char row, char column)
+{
+    if (this->GridVector[row][column].bomb)
+    {
+        this->GridVector[row][column].setchar('f');
+    }
+}
+
+
+
 void Grid::showgrid() {
 	if (this->rows == 10) {
 		cout << "\t  A B C D E F G H I J"<<endl;
@@ -66,37 +76,25 @@ void Grid::showgrid() {
 	}
 }
 
+
 int Grid::playGame() {
 	int flag_sets=0;
-	this->showgrid();
-
 	while (flag_sets < this->number_of_mines) {
 		cout << "Commands\n\n";
 		cout << "F - place a flag on the location\nR - reveal the uncovered location\n\n";
 		char row, column, command;
 		cout << "Enter three letters in <row letter> <column letter> <command>: ";
 		cin >> row >> column >> command;
-		if (command != 'r' && command != 'f' && command != 'R' && command != 'F')
+		if (command != 'r' && command != 'f')
 		{
 			cout << "Invalid command! Try again!!\n";
-			return -1;
-
 		}
 		else {
-			/*if (command == 'f' || command == 'F') {
-				this->flag(row, column);
-			}
-			else {
-				this->reveal(row, column);
-			}*/
-			cout << "Exiting!!"<<endl;
-			system("pause");
-			return -1;
-
 
 		}
 
 	}
 
 }
+
 
