@@ -8,6 +8,7 @@ class Block
 public:
 	char block;
 	bool bomb;
+	bool bomb_found=0;
 
 
 	Block(char block_property);
