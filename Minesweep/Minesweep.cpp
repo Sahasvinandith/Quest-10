@@ -16,7 +16,7 @@ int main()
     cout<<"\nEnter your option number: ";
     cin>>option;
 
-    Grid* newgrid;
+    Grid* newgrid=new Grid(10,10);
     switch (option)
     {
     case 1:

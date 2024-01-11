@@ -68,17 +68,31 @@ void Grid::showgrid() {
 
 int Grid::playGame() {
 	int flag_sets=0;
+	this->showgrid();
+
 	while (flag_sets < this->number_of_mines) {
 		cout << "Commands\n\n";
 		cout << "F - place a flag on the location\nR - reveal the uncovered location\n\n";
 		char row, column, command;
 		cout << "Enter three letters in <row letter> <column letter> <command>: ";
 		cin >> row >> column >> command;
-		if (command != 'r' && command != 'f')
+		if (command != 'r' && command != 'f' && command != 'R' && command != 'F')
 		{
 			cout << "Invalid command! Try again!!\n";
+			return -1;
+
 		}
 		else {
+			/*if (command == 'f' || command == 'F') {
+				this->flag(row, column);
+			}
+			else {
+				this->reveal(row, column);
+			}*/
+			cout << "Exiting!!"<<endl;
+			system("pause");
+			return -1;
+
 
 		}
 
