@@ -134,12 +134,13 @@ int Grid::playGame() {
 		cin >> inrow >> incolumn >> command;
 		row = std::toupper(inrow);
 		column = std::toupper(incolumn);
+		
 		if (command != 'r' && command != 'f' && command != 'R' && command != 'F')
 		{
 			cout << "Invalid command! Try again!!\n";
 			system("pause");
 		}
-		if (this->char_to_int(row) > this->GridVector.size() && this->char_to_int(column) > this->GridVector.size()) {
+		if (char_to_int(row) > this->GridVector.size() || char_to_int(column) > this->GridVector.size()) {
 			cout << "Invalid command! Try again!!\n";
 			system("pause");
 		}
