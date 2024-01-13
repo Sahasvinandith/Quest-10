@@ -15,7 +15,7 @@ int main()
     cout<<"\t  Option 2  \t|\t   15 by 15    \t\t|\t     18     \n";
     cout<<"\t  Option 3  \t|\t   20 by 20    \t\t|\t     24     \n";
 
-    int option;
+    int option=1;
     cout<<"\nEnter your option number: ";
     cin>>option;
 
@@ -35,7 +35,7 @@ int main()
         newgrid = new Grid(20, 20);
         break;
     default:
-        cout << "Wrong input!!! please try again!!!.\n";
+        cout << "Wrong input!!! please try again1!!!.\n";
         system("pause");
         system("cls");
         main();

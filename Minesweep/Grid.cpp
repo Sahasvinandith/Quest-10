@@ -134,6 +134,7 @@ int Grid::playGame() {
 		cin >> inrow >> incolumn >> command;
 		row = std::toupper(inrow);
 		column = std::toupper(incolumn);
+
 		
 		if (command != 'r' && command != 'f' && command != 'R' && command != 'F')
 		{
@@ -184,8 +185,7 @@ int Grid::countNeighboringBombs(int row, int column) {
 		if (column == 0) {
 			prev_colm_digit = 0;
 			next_colm_digit = 1;
-			prev_row_digit = 0;
-			next_row_digit = 1;
+			
 
 		}
 		if (column == (this->GridVector[0].size() - 1)) {
@@ -196,9 +196,9 @@ int Grid::countNeighboringBombs(int row, int column) {
 			prev_row_digit = 0;
 			next_row_digit = 1;
 		}
-		if (row == (this->GridVector.size() - 1)) {
-			prev_row_digit = column - 1;
-			next_row_digit = column;
+		if (row == (this->GridVector[0].size() - 1)) {
+			prev_row_digit = row - 1;
+			next_row_digit = row;
 		}
 		for (int i = prev_row_digit; i <= next_row_digit; ++i) {
 			for (int j = prev_colm_digit; j <= next_colm_digit; ++j) {
